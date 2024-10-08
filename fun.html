@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Funny I Love You Sukku Program</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow: hidden; /* Prevent scrolling */
+    }
+
+    .container {
+      text-align: center;
+      padding: 20px;
+      max-width: 100%;
+    }
+
+    h1 {
+      color: #ff0066;
+      font-size: 2rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+
+    .buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 5px;
+      transition: transform 0.2s ease;
+    }
+
+    #yesBtn {
+      background-color: #66ff66;
+    }
+
+    #noBtn {
+      background-color: #ff6666;
+    }
+
+    /* Media query for smaller screens (mobile devices) */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .btn {
+        padding: 8px 16px;
+        font-size: 16px;
+      }
+
+      .buttons {
+        flex-direction: column; /* Stack buttons vertically on small screens */
+        gap: 10px;
+      }
+
+      #noBtn {
+        position: static; /* Ensure "No" button doesn't move on small screens */
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>I Love You Sukku 💖</h1>
+    <p>Kya tumhe bhi mujhse pyaar hai?</p>
+    <div class="buttons">
+      <button class="btn" id="yesBtn">Yes</button>
+      <button class="btn" id="noBtn">No</button>
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+
+    // No button ki position randomly change hogi jab uspe mouse le jaoge (only on larger screens)
+    if (window.innerWidth > 600) {
+      noBtn.addEventListener("mouseover", () => {
+        const btnWidth = noBtn.offsetWidth;
+        const btnHeight = noBtn.offsetHeight;
+
+        const maxX = window.innerWidth - btnWidth;
+        const maxY = window.innerHeight - btnHeight;
+
+        const randomX = Math.floor(Math.random() * maxX);
+        const randomY = Math.floor(Math.random() * maxY);
+
+        noBtn.style.position = "absolute";
+        noBtn.style.left = `${randomX}px`;
+        noBtn.style.top = `${randomY}px`;
+      });
+    }
+
+    // Yes button pe click hone par message show hoga
+    yesBtn.addEventListener("click", () => {
+      alert("I love you too! 😘");
+    });
+  </script>
+
+</body>
+</html>
