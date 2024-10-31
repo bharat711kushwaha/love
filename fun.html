@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Funny I Love You Sukku Program</title>
+  <title>Funny I Love You Program</title>
   <style>
     body {
       display: flex;
@@ -14,7 +14,7 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      overflow: hidden; /* Prevent scrolling */
+      overflow: hidden;
     }
 
     .container {
@@ -56,7 +56,14 @@
       background-color: #ff6666;
     }
 
-    /* Media query for smaller screens (mobile devices) */
+    /* Video styles */
+    #myVideo {
+      display: none;
+      max-width: 90%;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
     @media (max-width: 600px) {
       h1 {
         font-size: 1.5rem;
@@ -72,33 +79,36 @@
       }
 
       .buttons {
-        flex-direction: column; /* Stack buttons vertically on small screens */
+        flex-direction: column;
         gap: 10px;
       }
 
       #noBtn {
-        position: static; /* Ensure "No" button doesn't move on small screens */
+        position: static;
       }
     }
-
   </style>
 </head>
 <body>
 
   <div class="container">
-    <h1>I Love You Sukku 💖</h1>
+    <h1>I Love You 💖</h1>
     <p>Kya tumhe bhi mujhse pyaar hai?</p>
     <div class="buttons">
       <button class="btn" id="yesBtn">Yes</button>
       <button class="btn" id="noBtn">No</button>
     </div>
+    <video id="myVideo" controls>
+      <source src="love.mp4" type="video/mp4"> <!-- Replace with your video file -->
+      Your browser does not support the video tag.
+    </video>
   </div>
 
   <script>
     const noBtn = document.getElementById("noBtn");
     const yesBtn = document.getElementById("yesBtn");
+    const myVideo = document.getElementById("myVideo");
 
-    // No button ki position randomly change hogi jab uspe mouse le jaoge (only on larger screens)
     if (window.innerWidth > 600) {
       noBtn.addEventListener("mouseover", () => {
         const btnWidth = noBtn.offsetWidth;
@@ -116,9 +126,10 @@
       });
     }
 
-    // Yes button pe click hone par message show hoga
     yesBtn.addEventListener("click", () => {
-      alert("I love you too! 😘");
+      myVideo.style.display = "block"; // Video dikhaye
+      myVideo.play(); // Video chalu kare
+      alert("I love you too! 😘"); // Optional message
     });
   </script>
 
